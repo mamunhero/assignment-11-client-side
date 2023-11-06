@@ -1,7 +1,11 @@
+import Offer from "./Offer";
+import Slider from "./Slider";
+
 const Home = () => {
   return (
     <div>
-      <h2>This is Home page</h2>
+      <Slider></Slider>
+      <Offer></Offer>
     </div>
   );
 };
