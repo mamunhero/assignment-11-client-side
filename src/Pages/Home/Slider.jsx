@@ -5,7 +5,8 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import 'swiper/css';const Slider = () => {
+import 'swiper/css';
+const Slider = () => {
   return (
     <div>
       <Swiper
