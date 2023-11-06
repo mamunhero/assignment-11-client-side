@@ -10,7 +10,6 @@ const Slider = () => {
   return (
     <div>
       <Swiper
-      // install Swiper modules
       spaceBetween={50}
       slidesPerView={1}
       navigation={true}
