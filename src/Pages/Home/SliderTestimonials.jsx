@@ -1,5 +1,5 @@
 // import Swiper core and required modules
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, } from 'swiper/modules';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,9 +15,9 @@ const SliderTestimonials = () => {
       spaceBetween={50}
       slidesPerView={3}
       navigation={true}
-      modules={[Navigation, Autoplay  ]}
+      modules={[Navigation, Autoplay]}
       autoplay={{ delay: 3000 }}
-      style={{ width: '100%' }}
+      
     >
       <SwiperSlide>
       <div className="w-[330px] h-[250px] bg-[#8a6bff] py-5 px-5 border-red-500 border-4 space-y-5 rounded-lg shadow-md text-white">
