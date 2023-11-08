@@ -6,6 +6,8 @@ import MyBooking from "../Pages/MyBooking/MyBooking";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Home from "../Pages/Home/Home";
+import PrivateRoute from "./PrivateRoute";
+import AddRoom from "../Pages/DataSend/AddRoom";
 
 const Route = createBrowserRouter([
   {
@@ -14,17 +16,21 @@ const Route = createBrowserRouter([
     errorElement: <Error></Error>,
     children:[
       {
-        index: true,
+        path: "/",
         element: <Home></Home>
       },
       {
-        path:"/rooms",
+        path:"rooms",
         element: <Rooms></Rooms>,
       },
       {
-        path:"/mybooking",
-        element: <MyBooking></MyBooking>
+        path:"mybooking",
+        element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
       },
+      {
+        path:"/addroom",
+        element: <AddRoom></AddRoom>
+      }
     ],
   },
   {
