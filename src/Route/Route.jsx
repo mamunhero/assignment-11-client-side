@@ -30,7 +30,8 @@ const Route = createBrowserRouter([
       {
         path:"/addroom",
         element: <AddRoom></AddRoom>
-      }
+      },
+      
     ],
   },
   {
