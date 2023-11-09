@@ -8,8 +8,13 @@ const AddRoom = () => {
     const image = form.image.value;
     const roomType = form.roomType.value;
     const price = form.price.value;
-    console.log(image, roomType, price);
-    const newAddRoom = {image, roomType, price}
+    const description = form.description.value;
+    const size = form.size.value;
+    const available = form.available.value;
+    const roomId = form.roomId.value;
+    const offer = form.offer.value;
+    console.log(image, roomType, price, description, size, available, roomId, offer);
+    const newAddRoom = {image, roomType, price, description, size, available, roomId, offer}
     console.log(newAddRoom);
     fetch("http://localhost:5000/room", {
     method: "POST",
@@ -71,6 +76,36 @@ const AddRoom = () => {
             <span className="label-text">Price</span>
           </label>
           <input type="text" placeholder="price" name="price" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Description</span>
+          </label>
+          <input type="text" placeholder="Description" name="description" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Room Size</span>
+          </label>
+          <input type="text" placeholder="Room Size" name="size" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Room Available</span>
+          </label>
+          <input type="text" placeholder="Room Available" name="available" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Room Id</span>
+          </label>
+          <input type="text" placeholder="Room ID" name="roomId" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Offer</span>
+          </label>
+          <input type="text" placeholder="Offer" name="offer" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
          <input type="submit" value="Added Room" className="btn btn-primary" />

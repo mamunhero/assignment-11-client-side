@@ -12,9 +12,9 @@ const RoomCard = ({roomInfo}) => {
     <h2 className="card-title">Room Type:{roomType}</h2>
     <p>Price: {price}</p>
     <div className="card-actions">
-     <Link to={`roomdetailes/${_id}`}>
-      <button className="btn btn-primary btn-sm">Detailes</button>
-     </Link>
+      <Link to={`/roomdetailes/${_id}`}>
+        <button className="btn btn-primary btn-sm">Detailes</button>
+      </Link>
     </div>
   </div>
 </div>

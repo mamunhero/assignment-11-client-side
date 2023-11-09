@@ -8,6 +8,8 @@ import Register from "../Pages/Register/Register";
 import Home from "../Pages/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import AddRoom from "../Pages/DataSend/AddRoom";
+import RoomDetailes from "../Pages/Roomdetailes/RoomDetailes";
+import AddDetailes from "../Pages/DataSend/AddDetailes";
 
 const Route = createBrowserRouter([
   {
@@ -31,7 +33,14 @@ const Route = createBrowserRouter([
         path:"/addroom",
         element: <AddRoom></AddRoom>
       },
-      
+      {
+        path:"/adddetailes",
+        element: <AddDetailes></AddDetailes>
+      },
+      {
+        path:"roomdetailes/:id",
+        element:<RoomDetailes></RoomDetailes>
+      },
     ],
   },
   {
