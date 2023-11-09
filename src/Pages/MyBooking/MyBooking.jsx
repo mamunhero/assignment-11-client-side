@@ -4,16 +4,16 @@ import BookiInfo from "./BookiInfo";
 import Swal from "sweetalert2";
 
 const MyBooking = () => {
-  const {user} = useContext(AuthContext)
-  const [booking, setBooking] = useState([])
+  const { user } = useContext(AuthContext);
+  const [booking, setBooking] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/booking?email=${user?.email}`)
-      .then(response => response.json())
-      .then(data => setBooking(data));
+    fetch(`https://assignment-11-server-side-self.vercel.app?email=${user?.email}`)
+      .then((response) => response.json())
+      .then((data) => setBooking(data));
   }, [user.email]);
-  
+
   // booking delete
-  const handleDelete = id => {
+  const handleDelete = (id) => {
     console.log(id);
     Swal.fire({
       title: "Are you sure?",
@@ -23,60 +23,55 @@ const MyBooking = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    })
-    .then((result)=>{
+    }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${id}`, {
-          method: "DELETE"
+        fetch(`https://assignment-11-server-side-self.vercel.app/${id}`, {
+          method: "DELETE",
         })
-        .then(response=> response.json())
-        .then(data=>{
-          console.log(data);
-          if (data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your Room hac been deleted!",
-              icon: "success"
-            });
-            const remaning = booking.filter(bookings=> bookings._id !== id)
-            setBooking(remaning)
-          }
-        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Room hac been deleted!",
+                icon: "success",
+              });
+              const remaning = booking.filter((bookings) => bookings._id !== id);
+              setBooking(remaning);
+            }
+          });
       }
-    })
-  }
+    });
+  };
   return (
     <div>
       <h2>User Booking Information:{booking.length}</h2>
-      
+
       <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Price</th>
-        <th>Room Size</th>
-        <th>Room Id</th>
-        <th>Offer</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-        {
-          booking.map(bookInfo=> <BookiInfo 
-            key={bookInfo._id}
-            bookInfo={bookInfo}
-            handleDelete={handleDelete}></BookiInfo>)
-        }
-    </tbody>
-  </table>
-</div>
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Price</th>
+              <th>Room Size</th>
+              <th>Room Id</th>
+              <th>Offer</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {booking.map((bookInfo) => (
+              <BookiInfo key={bookInfo._id} bookInfo={bookInfo} handleDelete={handleDelete}></BookiInfo>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
 export default MyBooking;
-
