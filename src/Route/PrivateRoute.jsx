@@ -7,10 +7,10 @@ const PrivateRoute = ({children}) => {
   if (loading) {
     return <span className="loading loading-ball loading-lg"></span>
   }
-  if (user) {
+  if (user?.email) {
     return children
   }
-  return <Navigate to="/login"></Navigate>;
+  return <Navigate to="/login" replace></Navigate>;
 };
 
 export default PrivateRoute;

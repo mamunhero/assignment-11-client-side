@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const BookingFrom = () => {
@@ -85,7 +85,9 @@ const BookingFrom = () => {
           <input type="text" placeholder="Offer" name="offer" className="input input-bordered" value={offer} required />
         </div>
         <div className="form-control mt-6">
-          <input type="submit" value="Confirem Booking" className="btn btn-primary" />
+          <Link to="/mybooking">
+            <input type="submit" value="Confirem Booking" className="btn btn-primary w-full" />
+          </Link>
         </div>
       </form>
     </div>
