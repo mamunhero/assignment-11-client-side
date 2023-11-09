@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import BookiInfo from "./BookiInfo";
+import Swal from "sweetalert2";
 
 const MyBooking = () => {
   const {user} = useContext(AuthContext)
@@ -11,6 +12,39 @@ const MyBooking = () => {
       .then(data => setBooking(data));
   }, [user.email]);
   
+  // booking delete
+  const handleDelete = id => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete it!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+    .then((result)=>{
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/booking/${id}`, {
+          method: "DELETE"
+        })
+        .then(response=> response.json())
+        .then(data=>{
+          console.log(data);
+          if (data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your Room hac been deleted!",
+              icon: "success"
+            });
+            const remaning = booking.filter(bookings=> bookings._id !== id)
+            setBooking(remaning)
+          }
+        })
+      }
+    })
+  }
   return (
     <div>
       <h2>User Booking Information:{booking.length}</h2>
@@ -31,9 +65,12 @@ const MyBooking = () => {
       </tr>
     </thead>
     <tbody>
-      {
-        booking.map(bookInfo=> <BookiInfo key={bookInfo._id} bookInfo={bookInfo}></BookiInfo>)
-      }
+        {
+          booking.map(bookInfo=> <BookiInfo 
+            key={bookInfo._id}
+            bookInfo={bookInfo}
+            handleDelete={handleDelete}></BookiInfo>)
+        }
     </tbody>
   </table>
 </div>
