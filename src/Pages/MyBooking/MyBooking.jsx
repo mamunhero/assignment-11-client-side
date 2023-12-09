@@ -7,7 +7,7 @@ const MyBooking = () => {
   const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
   useEffect(() => {
-    fetch(`https://assignment-11-server-side-self.vercel.app?email=${user?.email}`)
+    fetch(`https://assignment-11-server-side-smoky.vercel.app?email=${user?.email}`)
       .then((response) => response.json())
       .then((data) => setBooking(data));
   }, [user.email]);
@@ -25,7 +25,7 @@ const MyBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://assignment-11-server-side-self.vercel.app/${id}`, {
+        fetch(`https://assignment-11-server-side-smoky.vercel.app/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())

@@ -7,7 +7,7 @@ const BookingFrom = () => {
   const [room, setRoom] = useState([]);
   const { _id, price, description, size, roomId, offer } = room || {};
   useEffect(() => {
-    fetch(`https://assignment-11-server-side-self.vercel.appfrom/${params.id}`)
+    fetch(`https://assignment-11-server-side-smoky.vercel.app/${params.id}`)
       .then((response) => response.json())
       .then((data) => setRoom(data));
   }, []);
@@ -23,7 +23,7 @@ const BookingFrom = () => {
     console.log(name, phone, price, size, roomId, offer);
     const booking = { name, phone, price, size, roomId, offer };
     console.log(booking);
-    fetch("https://assignment-11-server-side-self.vercel.app", {
+    fetch("https://assignment-11-server-side-smoky.vercel.app", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddRoom = () => {
-  const handleAddRoom = event => {
+  const handleAddRoom = (event) => {
     event.preventDefault();
     const form = event.target;
     const image = form.image.value;
@@ -14,44 +14,40 @@ const AddRoom = () => {
     const roomId = form.roomId.value;
     const offer = form.offer.value;
     console.log(image, roomType, price, description, size, available, roomId, offer);
-    const newAddRoom = {image, roomType, price, description, size, available, roomId, offer}
+    const newAddRoom = { image, roomType, price, description, size, available, roomId, offer };
     console.log(newAddRoom);
-    fetch("http://localhost:5000/room", {
-    method: "POST",
-    headers: {
-    "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newAddRoom)
-  })
-  .then(response=> response.json())
-  .then(data=> {
-    console.log(data);
-    if (data.insertedId) {
-      Swal.fire({
-        title: "Good job!",
-        text: "Room Added is Sucessfully!",
-        icon: "success",
-        confirmButtonText: "Ok",
+    fetch("https://assignment-11-server-side-smoky.vercel.app/room", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAddRoom),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Room Added is Sucessfully!",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
       });
-    }
-    
-  })
 
-//   axios.post('http://localhost:5000/room', newAddRoom, {
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// })
-//   .then(response => {
-//     console.log(response.data);
-//   })
-//   .catch(error => {
-//     console.error('An error occurred:', error);
-//   });
-    
-
-
-  }
+    //   axios.post('https://assignment-11-server-side-smoky.vercel.app/room', newAddRoom, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // })
+    //   .then(response => {
+    //     console.log(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.error('An error occurred:', error);
+    //   });
+  };
   return (
     <div>
       <form onSubmit={handleAddRoom} className="card-body">
@@ -108,7 +104,7 @@ const AddRoom = () => {
           <input type="text" placeholder="Offer" name="offer" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
-         <input type="submit" value="Added Room" className="btn btn-primary" />
+          <input type="submit" value="Added Room" className="btn btn-primary" />
         </div>
       </form>
     </div>
@@ -116,11 +112,3 @@ const AddRoom = () => {
 };
 
 export default AddRoom;
-
-
-
-
-
-
-
-
